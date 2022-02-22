@@ -12,11 +12,11 @@ import retrofit2.Response
 
 class Repository(private val service: NewsApi) {
 
-   suspend fun getTopHeadLines(options: Map<String, String>): Response<NewsResponse>{
+   fun getTopHeadLines(options: Map<String, String>): Observable<NewsResponse>{
        return service.getTopHeadlines(options)
    }
 
-   suspend fun searchNews(query: String, pageNumber: Int): Response<NewsResponse>{
+   fun searchNews(query: String, pageNumber: Int): Observable<NewsResponse>{
       return service.search(query, pageNumber)
    }
 

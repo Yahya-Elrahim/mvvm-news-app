@@ -1,7 +1,7 @@
 package com.johnapps.newsapp.ui.viewmodel
 
 import android.app.Application
-import android.content.Context
+import android.util.Log
 import androidx.lifecycle.*
 import com.johnapps.newsapp.model.NewsResponse
 import com.johnapps.newsapp.networking.ApiConst
@@ -10,9 +10,10 @@ import com.johnapps.newsapp.networking.RetrofitClient
 import com.johnapps.newsapp.repository.Repository
 import com.johnapps.newsapp.utils.AppUtil
 import com.johnapps.newsapp.utils.Resource
-import kotlinx.coroutines.launch
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import retrofit2.HttpException
-import retrofit2.Response
 import java.io.IOException
 import java.util.LinkedHashMap
 
@@ -22,6 +23,8 @@ class NewsViewModel(
 
     var newsLiveData: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
 
+    private val disposable = CompositeDisposable()
+
     private val api = RetrofitClient.api
 
     private val repository = Repository(api)
@@ -30,47 +33,35 @@ class NewsViewModel(
 
     private fun fetchTopHeadlines() {
 
-        viewModelScope.launch {
+        try {
 
-            newsLiveData.postValue(Resource.Loading())
+            if (AppUtil.hasInternetConnection(getApplication())) {
 
-            try {
-                if (AppUtil.hasInternetConnection(getApplication())){
+                newsLiveData.postValue(Resource.Loading())
 
-                    val response = repository.getTopHeadLines(options)
-
-                    newsLiveData.postValue(handleResponse(response))
-                }
-                else{
-                    newsLiveData.postValue(Resource.Error(message = "No Internet Connection"))
-                }
-            }catch (t: Throwable){
-                when(t){
-                    is IOException -> {
-                        newsLiveData.postValue(Resource.Error(message = "Network Failure"))
-                    }
-                    is HttpException ->{
-                        newsLiveData.postValue(Resource.Error(message = "Conversion Error"))
-                    }
-                }
-            }
-
-
-
-
-        }
-    }
-
-    private fun handleResponse(response: Response<NewsResponse>): Resource<NewsResponse>{
-
-        if (response.isSuccessful){
-
-            response.body()?.let {
-                return Resource.Success(it)
+                disposable.add(repository
+                    .getTopHeadLines(options)
+                    .subscribeOn(Schedulers.io())
+                    .subscribeOn(AndroidSchedulers.mainThread())
+                    .subscribe { result ->
+                        result?.let {
+                            newsLiveData.postValue(Resource.Success(result))
+                        }
+                    })
+            } else {
+                newsLiveData.postValue(Resource.Error(message = "No Internet Connection"))
             }
         }
-        return Resource.Error(null, response.message())
-
+        catch (error: Throwable){
+            when(error){
+                is IOException -> {
+                    newsLiveData.postValue(Resource.Error(message = "Network Failure"))
+                }
+                is HttpException ->{
+                    newsLiveData.postValue(Resource.Error(message = "Conversion Error"))
+                }
+            }
+        }
     }
 
 
@@ -93,6 +84,11 @@ class NewsViewModel(
         fetchTopHeadlines()
     }
 
+
+    override fun onCleared() {
+        super.onCleared()
+        disposable.clear()
+    }
 
 
 
