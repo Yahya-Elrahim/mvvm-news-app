@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/news_fragment">
+
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/item_news_shimmer" />
+
+            <include layout="@layout/item_news_shimmer" />
+
+            <include layout="@layout/item_news_shimmer" />
+
+            <include layout="@layout/item_news_shimmer" />
+
+            <include layout="@layout/item_news_shimmer" />
+
+            <include layout="@layout/item_news_shimmer" />
+
+            <include layout="@layout/item_news_shimmer" />
+
+            <include layout="@layout/item_news_shimmer" />
+
+            <include layout="@layout/item_news_shimmer" />
+
+            <include layout="@layout/item_news_shimmer" />
+
+            <include layout="@layout/item_news_shimmer" />
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/load_error"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/iv"
+            android:layout_marginBottom="@dimen/item_margin"
+            android:textColor="@color/color_gray"
+            android:textSize="@dimen/text_title_primary"
+            android:text="sdfsfsdfsf"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_centerInParent="true"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/page_error"/>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/try_again"
+            android:layout_width="250dp"
+            android:layout_height="56dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:text="Try again"
+            android:textColor="@color/white"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/abc_button_background"/>
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

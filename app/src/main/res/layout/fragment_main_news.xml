@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.MainNewsFragment"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:id="@+id/mainNewsFragment">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/main_fragment_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/tab_title_color"
+        app:tabIndicatorColor="@color/tab_indicator_color"
+        app:tabTextAppearance="@style/CustomTextAppearanceTab"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/sort_by_recycle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/main_fragment_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"/>
+
+</LinearLayout>

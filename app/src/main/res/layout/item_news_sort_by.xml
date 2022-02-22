@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    android:id="@+id/sort_by_item"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/item_margin"
+    android:text="Text"
+    android:textSize="@dimen/text_title_4"
+    android:background="@drawable/abc_selected_item"
+    android:textColor="@color/tab_title_selected_color"
+    android:layout_marginTop="@dimen/item_margin"
+    android:layout_marginBottom="@dimen/item_margin"
+    android:layout_marginEnd="6dp"
+    android:layout_marginStart="4dp"/>

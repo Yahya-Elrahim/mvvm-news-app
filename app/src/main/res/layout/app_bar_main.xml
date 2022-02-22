@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
+    tools:context=".ui.activities.MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:theme="@style/Theme.NewsApp.AppBarOverlay"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:popupTheme="@style/Theme.NewsApp.PopupOverlay"
+            android:contentInsetLeft="0dp"
+            android:contentInsetStart="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            android:contentInsetRight="0dp"
+            android:contentInsetEnd="0dp"
+            app:contentInsetRight="0dp"
+            app:navigationIcon="@null"
+            app:contentInsetEnd="0dp">
+
+            <RelativeLayout
+                android:layout_gravity="start"
+                android:gravity="start"
+                android:layout_width="match_parent"
+                android:layout_height="48dp">
+                <ImageView
+                    android:id="@+id/iv1"
+                    android:layout_centerVertical="true"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/abc_title_backgroun_1"/>
+                <ImageView
+                    android:id="@+id/iv2"
+                    android:layout_marginStart="75dp"
+                    android:layout_centerVertical="true"
+                    android:layout_width="74dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/abc_title_backgroun_2"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/last"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignStart="@+id/iv1"
+                    android:layout_marginStart="10dp"/>
+                <TextView
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"
+                    android:text="@string/news"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignEnd="@+id/iv2"/>
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include layout="@layout/content_main" />
+
+    <!--<com.google.android.material.bottomnavigation.BottomNavigationView
+    android:id="@+id/bottom_navigation_bar"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    app:menu="@menu/bottom_menu"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"/>-->
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

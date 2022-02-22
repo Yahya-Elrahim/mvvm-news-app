@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">NewsApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="all_news">All News</string>
+    <string name="business">Business</string>
+    <string name="title_activity_main223233">Main2Activity23233</string>
+    <string name="last">latest</string>
+    <string name="news">news</string>
+
+    <string name="minutes_ago">minutes ago</string>
+    <string name="hours_ago">hours ago</string>
+    <string name="yesterday_at">Yesterday at</string>
+    <string name="today_at">Today at</string>
+    <string name="days_ago">days ago</string>
+    <string name="just_now">Just now</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="at">at</string>
+
+</resources>
