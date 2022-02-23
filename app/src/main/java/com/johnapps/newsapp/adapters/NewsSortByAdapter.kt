@@ -17,6 +17,7 @@ class NewsSortByAdapter(private val items: ArrayList<SortItem>): RecyclerView.Ad
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SortViewHolder {
         return SortViewHolder(
+
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_news_sort_by, parent, false)
         )

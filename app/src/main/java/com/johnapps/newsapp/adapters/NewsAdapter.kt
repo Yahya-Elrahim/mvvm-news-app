@@ -3,32 +3,33 @@ package com.johnapps.newsapp.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
+import androidx.databinding.DataBindingUtil
 
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.johnapps.newsapp.R
+import com.johnapps.newsapp.databinding.ItemNewsBinding
+import com.johnapps.newsapp.databinding.ItemNewsTopBinding
 import com.johnapps.newsapp.model.Article
 import com.johnapps.newsapp.utils.getDateFromString
-import com.johnapps.newsapp.utils.loadImage
+import kotlinx.android.synthetic.main.item_news.view.*
 import kotlinx.android.synthetic.main.item_news_top.view.*
-import kotlinx.android.synthetic.main.news_item.view.*
-import kotlinx.android.synthetic.main.news_item.view.tvPublishedAt
-import kotlinx.android.synthetic.main.news_item.view.tvSource
+import kotlinx.android.synthetic.main.item_news_top.view.tvPublishedAt
+import kotlinx.android.synthetic.main.item_news_top.view.tvSource
 
-private const val TOP_NEWS: Int = 0
-private const val OTHER: Int = 1
 
 class NewsAdapter: RecyclerView.Adapter<NewsAdapter.MyHolderView>() {
 
+    private val TOP_NEWS: Int = 0
+    private val OTHER: Int = 1
 
     private var onItemClickListener: ((Article) -> Unit)? = null
 
 
 
-    class MyHolderView(itemView: View): RecyclerView.ViewHolder(itemView)
+    class MyHolderView(private val binding: View): RecyclerView.ViewHolder(binding)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolderView {
 
@@ -44,7 +45,7 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.MyHolderView>() {
                 MyHolderView(
                     LayoutInflater
                         .from(parent.context)
-                        .inflate(R.layout.news_item, parent, false))
+                        .inflate(R.layout.item_news, parent, false))
             }
         }
 

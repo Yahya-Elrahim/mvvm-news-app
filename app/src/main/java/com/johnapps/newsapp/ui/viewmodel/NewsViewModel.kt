@@ -1,33 +1,33 @@
 package com.johnapps.newsapp.ui.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.johnapps.newsapp.model.NewsResponse
 import com.johnapps.newsapp.networking.ApiConst
 import com.johnapps.newsapp.networking.ApiUtil
-import com.johnapps.newsapp.networking.RetrofitClient
+import com.johnapps.newsapp.networking.NewsApi
 import com.johnapps.newsapp.repository.Repository
 import com.johnapps.newsapp.utils.AppUtil
 import com.johnapps.newsapp.utils.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import retrofit2.HttpException
 import java.io.IOException
 import java.util.LinkedHashMap
+import javax.inject.Inject
 
-class NewsViewModel(
-    app: Application
+@HiltViewModel
+class NewsViewModel @Inject constructor(
+    app: Application,
+    private val repository: Repository
 ) : AndroidViewModel(app) {
 
     var newsLiveData: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
 
     private val disposable = CompositeDisposable()
 
-    private val api = RetrofitClient.api
-
-    private val repository = Repository(api)
 
     val options = LinkedHashMap<String, String>()
 
